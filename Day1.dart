@@ -5,6 +5,9 @@
 // } //Enumeration of constants; List of constants
 
 void main() {
+  // const - Used for compile time constants
+  // final - Used at runtime, memory usage only when used/called
+
   // var carStatus = Status.stop;
   // if (carStatus == Status.stop) {
   //   print('Stopped');

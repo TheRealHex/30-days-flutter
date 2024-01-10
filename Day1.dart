@@ -47,18 +47,23 @@
 
 // Class in dart
 class Product {
-  var name;
-  int quantity;
-  Product(
-      {this.name = 'default',
-      this.quantity = 2} // Assigns value to instance variable using this.
-      ) {
+  String? name;
+  int? quantity;
+  String? description;
+  Product({
+    this.name = 'default',
+    this.quantity = 2,
+    this.description,
+  } // Assigns value to instance variable using this.
+      ) {} //constructor
+  void getDetails() {
     print("Product: $name");
     print("Quantity: $quantity");
-  } //constructor
+    print("Description: $description");
+  }
 }
 
 void main() {
   Product P = Product(name: 'Chips'); // Object initialization
-  Product Q = Product(); // Object initialization
+  P.getDetails();
 }

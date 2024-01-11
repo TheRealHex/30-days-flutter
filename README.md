@@ -1,6 +1,41 @@
 # 30-days-flutter
-### What I learnt so far?
-    - About Dart [ datatypes, arrays, objects, OOP ]
-    - Setting up Flutter & creating a project
-    - Different basic widgets and their attributes
-    - Stateful & Stateless difference and usecase
+### Syllabus & Progress
+    [x]
+    Introduction to Mobile Development
+    History of Moile App Development
+    Dart & Flutter concepts
+    About Dart Language
+
+    [x]
+    Working with Dart in online & offline mode
+    Dart Basics
+    Variables, typing disciplines, list(arays), ioops, functions, arrow/lambda functions, classes & constructors(its types), objects, map, importing files(reusability)
+    Dart Installation & working offline
+
+    []
+    Understanding Flutter Framework
+    Setting up Flutter environment
+    Creating flutter project & Understanding the project structure
+    Running our First Flutter App
+
+    []
+    Exploring Various mobile components & their names
+    Widgets & their types (Stateful VS Stateless)
+    Exploring widgets in flutter
+
+    []
+    Creating multiple screens & routing between Screens
+    Creating dynamic routing
+    Page transition during routing
+    Exploring various widget components in flutter
+
+    []
+    Understanding the layouts in model & their modelings
+    Working with Image files, & other static files in flutter
+    Understanding the differences in Stateful & Stateless with examples
+    Exploring third party & inbuilt libraries
+    REST API implementation in flutter (News App)
+    The concept of Null-Safety in flutter
+
+    []
+    Publishing Flutter app in Google Play

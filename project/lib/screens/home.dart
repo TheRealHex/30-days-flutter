@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/screens/practice.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,34 +15,73 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Demo App'),
+        backgroundColor: Colors.black,
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+        centerTitle: true,
       ),
+      backgroundColor: Colors.black,
       // const Icon(Icons.sports_soccer),
-      body: Container(
-        child: ListView.builder(
-          itemCount: index,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: ListTile(
-                leading: const Icon(Icons.list),
-                trailing: const Icon(Icons.more_horiz),
-                title: Text('List $index'),
-                subtitle: const Text(
-                    'Lorem ipsum dolor sit amet, qui minim labore cupidatat.'),
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: const LinearGradient(
+                colors: [Colors.white, Colors.white70],
               ),
-            );
-          },
+            ),
+            height: MediaQuery.of(context).size.height / 1.2,
+            width: MediaQuery.of(context).size.width / 1.2,
+            child: ListView.builder(
+              itemCount: index,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        leading: const Icon(Icons.list),
+                        trailing: const Icon(Icons.more_horiz),
+                        title: Text('List $index'),
+                        titleTextStyle: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        subtitle: const Text(
+                            'Lorem ipsum dolor sit amet, qui minim labore cupidatat.'),
+                      ),
+                      const Divider(
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            if (index < 7) {
-              index++;
-            } else {
-              index = 0;
-            }
-          });
+          setState(
+            () {
+              if (index > 6) {
+                index = 0;
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Practice()),
+                );
+              } else {
+                index++;
+              }
+            },
+          );
         },
         child: const Icon(Icons.plus_one_rounded),
       ),

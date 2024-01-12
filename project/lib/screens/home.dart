@@ -8,34 +8,39 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int score = 1;
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Demo App'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Icon(Icons.sports_soccer),
-          Center(
-            child: Text(
-              'Score is $score',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey,
+      // const Icon(Icons.sports_soccer),
+      body: Container(
+        child: ListView.builder(
+          itemCount: index,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: ListTile(
+                leading: const Icon(Icons.list),
+                trailing: const Icon(Icons.more_horiz),
+                title: Text('List $index'),
+                subtitle: const Text(
+                    'Lorem ipsum dolor sit amet, qui minim labore cupidatat.'),
               ),
-            ),
-          ),
-        ],
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            score++;
+            if (index < 7) {
+              index++;
+            } else {
+              index = 0;
+            }
           });
         },
         child: const Icon(Icons.plus_one_rounded),

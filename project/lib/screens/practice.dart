@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Practice extends StatelessWidget {
+class Practice extends StatefulWidget {
   const Practice({super.key});
 
+  @override
+  State<Practice> createState() => _PracticeState();
+}
+
+class _PracticeState extends State<Practice> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    String btnText = 'Like';
     return Scaffold(
       appBar: AppBar(
         title: const Text('Learnings'),
@@ -32,9 +38,13 @@ class Practice extends StatelessWidget {
               ],
             ),
             OutlinedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  btnText = 'Liked';
+                });
+              },
               icon: const Icon(Icons.favorite),
-              label: const Text('Like'),
+              label: Text(btnText),
             ),
             // TextButton(
             //   onPressed: () {},

@@ -21,6 +21,8 @@
 
  - [x] Widgets & their types **(Stateful VS Stateless)**
 
+ - [ ] Responsive Design
+
  - [ ] Exploring Widgets in Flutter
 
  - [ ] Exploring various Widgets in Flutter
@@ -44,5 +46,4 @@
  - [ ] Exploring **third party & inbuilt libraries**
  - [ ] **REST API** implementation in Flutter (**News App**)
  - [ ] The concept of **Null-Safety** in Flutter
- - [ ] Responsive Design
  - [ ] Publishing Flutter app in Google Play

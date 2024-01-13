@@ -44,4 +44,5 @@
  - [ ] Exploring **third party & inbuilt libraries**
  - [ ] **REST API** implementation in Flutter (**News App**)
  - [ ] The concept of **Null-Safety** in Flutter
+ - [ ] Responsive Design
  - [ ] Publishing Flutter app in Google Play

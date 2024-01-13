@@ -5,6 +5,8 @@ class Practice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Learnings'),
@@ -12,31 +14,45 @@ class Practice extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            TextButton(
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: SizedBox(
+                    height: screenHeight / 1.3,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(40),
+                      child: Image.network(
+                          'https://www.bikebound.com/wp-content/uploads/2018/07/Honda-125-Brat-Cafe-1.jpg'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            OutlinedButton.icon(
               onPressed: () {},
-              child: const Text('Text Button'),
+              icon: const Icon(Icons.favorite),
+              label: const Text('Like'),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: OutlinedButton.icon(
-                onPressed: () {},
-                icon: const Icon(Icons.ads_click),
-                label: const Text('Click'),
-              ),
-            ),
-            MaterialButton(
-              onPressed: () {},
-              color: Colors.blue,
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.sports_soccer),
-              color: Colors.brown,
-            ),
-            ...['Hello', 'Hi', 'Hey', 'Greetings']
-                .map((e) => Chip(label: Text(e)))
-                .toList()
+            // TextButton(
+            //   onPressed: () {},
+            //   child: const Text('Text Button'),
+            // ),
+            // MaterialButton(
+            //   onPressed: () {},
+            //   color: Colors.blue,
+            //   child: const Text('Material'),
+            // ),
+            // IconButton(
+            //   onPressed: () {},
+            //   icon: const Icon(Icons.sports_soccer),
+            //   color: Colors.brown,
+            // ),
+            // ...['Hello', 'Hi', 'Hey', 'Greetings']
+            //     .map((e) => Chip(label: Text(e)))
+            //     .toList()
           ],
         ),
       ),

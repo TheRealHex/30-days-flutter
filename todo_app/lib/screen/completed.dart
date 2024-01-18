@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Checked extends StatelessWidget {
+class Checked extends StatefulWidget {
   Checked({
     super.key,
     required this.checkedList,
@@ -8,11 +8,16 @@ class Checked extends StatelessWidget {
   List<String> checkedList = [];
 
   @override
+  State<Checked> createState() => _CheckedState();
+}
+
+class _CheckedState extends State<Checked> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Completed')),
       body: ListView.builder(
-        itemCount: checkedList.length,
+        itemCount: widget.checkedList.length,
         itemBuilder: (context, index) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -22,16 +27,18 @@ class Checked extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width / 1.4,
                 child: ListTile(
-                  title: Text(checkedList[index]),
+                  title: Text(widget.checkedList[index]),
                   titleTextStyle: const TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.black),
                 ),
               ),
               IconButton(
                 onPressed: () {
-                  if (checkedList.isNotEmpty) {
-                    checkedList.removeAt(index);
-                  }
+                  setState(() {
+                    if (widget.checkedList.isNotEmpty) {
+                      widget.checkedList.removeAt(index);
+                    }
+                  });
                 },
                 icon: const Icon(Icons.delete),
               ),

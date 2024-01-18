@@ -10,6 +10,7 @@ class MobileView extends StatefulWidget {
 }
 
 class _MobileViewState extends State<MobileView> {
+  final _textController = TextEditingController();
   final List<String> todoList = [];
   final List<String> checkedList = [];
   late String inputValue;
@@ -35,6 +36,7 @@ class _MobileViewState extends State<MobileView> {
                   children: [
                     Flexible(
                         child: TextField(
+                      controller: _textController,
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
@@ -55,6 +57,8 @@ class _MobileViewState extends State<MobileView> {
                           setState(() {
                             if (inputValue != '') {
                               todoList.add(inputValue);
+                              _textController.clear();
+                              inputValue = '';
                             }
                           });
                         },
@@ -82,17 +86,21 @@ class _MobileViewState extends State<MobileView> {
                             children: [
                               IconButton(
                                   onPressed: () {
-                                    checkedList.add(todoList[index]);
-                                    if (todoList.isNotEmpty) {
-                                      todoList.removeAt(index);
-                                    }
+                                    setState(() {
+                                      checkedList.add(todoList[index]);
+                                      if (todoList.isNotEmpty) {
+                                        todoList.removeAt(index);
+                                      }
+                                    });
                                   },
                                   icon: const Icon(Icons.check)),
                               IconButton(
                                 onPressed: () {
-                                  if (todoList.isNotEmpty) {
-                                    todoList.removeAt(index);
-                                  }
+                                  setState(() {
+                                    if (todoList.isNotEmpty) {
+                                      todoList.removeAt(index);
+                                    }
+                                  });
                                 },
                                 icon: const Icon(Icons.delete),
                               ),

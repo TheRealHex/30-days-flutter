@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/responsive/constants.dart';
+import 'package:todo_app/screen/completed.dart';
 
 class MobileView extends StatefulWidget {
   const MobileView({super.key});
@@ -9,7 +10,9 @@ class MobileView extends StatefulWidget {
 }
 
 class _MobileViewState extends State<MobileView> {
-  final todoList = <String>[];
+  final List<String> todoList = [];
+  final List<String> checkedList = [];
+  late String inputValue;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,12 +21,9 @@ class _MobileViewState extends State<MobileView> {
         appBar: myAppBar,
         body: Center(
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
             ),
-            height: MediaQuery.of(context).size.height / 1.4,
-            width: MediaQuery.of(context).size.width / 1.4,
             child: Column(children: [
               const SizedBox(height: 50),
               // Text input and insert icon
@@ -33,11 +33,29 @@ class _MobileViewState extends State<MobileView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Flexible(child: TextField()),
+                    Flexible(
+                        child: TextField(
+                      decoration: const InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        // fillColor: Colors.grey,
+                        // filled: true,
+                        hintText: 'Go for a hike!',
+                      ),
+                      onChanged: (value) {
+                        inputValue = value;
+                      },
+                    )),
                     IconButton(
                         onPressed: () {
                           setState(() {
-                            todoList.add('hi');
+                            if (inputValue != '') {
+                              todoList.add(inputValue);
+                            }
                           });
                         },
                         icon: const Icon(Icons.add))
@@ -46,26 +64,58 @@ class _MobileViewState extends State<MobileView> {
               ),
               // Display inserted text and icons to check & delete
               const SizedBox(height: 50),
-              Expanded(
-                child: ListView.builder(itemBuilder: (context, index) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text('Its $index'),
-                      Row(
+              Flexible(
+                child: ListView.builder(
+                    itemCount: todoList.length,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          IconButton(onPressed: () {}, icon: Icon(Icons.check)),
-                          IconButton(
-                              onPressed: () {}, icon: Icon(Icons.delete)),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 1.4,
+                            child: ListTile(
+                              title: Text(todoList[index]),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    checkedList.add(todoList[index]);
+                                    if (todoList.isNotEmpty) {
+                                      todoList.removeAt(index);
+                                    }
+                                  },
+                                  icon: const Icon(Icons.check)),
+                              IconButton(
+                                onPressed: () {
+                                  if (todoList.isNotEmpty) {
+                                    todoList.removeAt(index);
+                                  }
+                                },
+                                icon: const Icon(Icons.delete),
+                              ),
+                            ],
+                          )
                         ],
-                      )
-                    ],
-                  );
-                }),
+                      );
+                    }),
               )
             ]),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Checked(
+                        checkedList: checkedList,
+                      )),
+            );
+          },
+          child: const Icon(Icons.checklist),
         ),
       ),
     );

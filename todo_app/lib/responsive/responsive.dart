@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/responsive/desktop_view.dart';
-import 'package:todo_app/responsive/mobile_view.dart';
-import 'package:todo_app/responsive/tablet_view.dart';
 
 class ResponsiveUI extends StatelessWidget {
   final Widget mobileScaffold;

@@ -23,13 +23,13 @@
 
  - [ ] Responsive Design
 
- - [ ] Exploring Widgets in Flutter
+ - [x] Exploring Widgets in Flutter
 
- - [ ] Exploring various Widgets in Flutter
+ - [x] Exploring various Widgets in Flutter
 
 		- (ListTile, Container Decoration, Card, Buttons, Chips, CircleAvatar, MaterialApp)
 
- - [ ] Understanding the layouts in model & their modelings
+ - [x] Understanding the layouts in model & their modelings
 
 		- (Row, Column, Expanded, Gridview, ListBuilder, Stack)
 
@@ -37,13 +37,14 @@
        functions, classes)
 
  - [ ] Flutter **Filename convention**
- - [ ] Creating Multiple screens & **routing** between **Screens**
+ - [x] Creating Multiple screens & **routing** between **Screens**
  - [ ] Creating **dynamic routing**
- - [ ] Page **transition** during routing
+ - [x] Page **transition** during routing
  - [ ] Playing with **Bottom Navigation Bar**
  - [ ] Understanding the **layouts** in model & their modelings
- - [ ] Working with **Image files, & other static files** in Flutter
+ - [x] Working with **Image files, & other static files** in Flutter
  - [ ] Exploring **third party & inbuilt libraries**
  - [ ] **REST API** implementation in Flutter (**News App**)
  - [ ] The concept of **Null-Safety** in Flutter
+ - [ ] Local database using sqflite
  - [ ] Publishing Flutter app in Google Play

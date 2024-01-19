@@ -3,8 +3,9 @@ import 'package:todo_app/responsive/constants.dart';
 import 'package:todo_app/screen/completed.dart';
 
 class MobileView extends StatefulWidget {
-  const MobileView({super.key});
-
+  const MobileView({
+    super.key,
+  });
   @override
   State<MobileView> createState() => _MobileViewState();
 }

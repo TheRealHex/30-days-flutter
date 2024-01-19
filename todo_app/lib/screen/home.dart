@@ -110,13 +110,13 @@ class _HomeState extends State<Home> {
             IconButton(
                 onPressed: () {
                   setState(() {
-                    checkedList.add(todoList[index]);
-                    if (todoList.isNotEmpty) {
-                      // todoList.removeAt(index);
+                    if (inputValue.isNotEmpty) {
+                      todoList[index] = inputValue;
+                      _textController.clear();
                     }
                   });
                 },
-                icon: const Icon(Icons.edit)),
+                icon: const Icon(Icons.find_replace)),
             IconButton(
                 onPressed: () {
                   setState(() {

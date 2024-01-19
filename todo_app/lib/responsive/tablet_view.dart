@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/responsive/constants.dart';
 import 'package:todo_app/responsive/mobile_view.dart';
 
 class TabletView extends StatelessWidget {

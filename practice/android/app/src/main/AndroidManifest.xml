@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="project"
-        android:name="${applicationName}"
+        android:label="Todo App"
+        android:name="Todo App"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

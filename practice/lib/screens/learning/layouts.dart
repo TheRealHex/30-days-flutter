@@ -14,9 +14,9 @@ class Layout extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ImageBanner('assets/images/Mountain.jpg'),
-          TextSection(Colors.red),
-          TextSection(Colors.blue),
-          TextSection(Colors.green),
+          TextSection("Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet, ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."),
+          TextSection("Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet, ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."),
+          TextSection("Lorem ipsum dolor sit amet", "Lorem ipsum dolor sit amet, ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.",),
         ],
       ),
     );

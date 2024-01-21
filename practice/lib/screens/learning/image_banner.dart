@@ -9,8 +9,8 @@ class ImageBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints.expand(
-          height: MediaQuery.of(context).size.height / 1.8),
+      constraints:
+          BoxConstraints.expand(height: MediaQuery.of(context).size.height / 2),
       decoration: const BoxDecoration(color: Colors.grey),
       child: Image.asset(
         _assetPath,

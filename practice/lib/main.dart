@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/style.dart';
 
 import 'screens/learning/layouts.dart';
 // import 'package:project/screens/home.dart';
@@ -11,9 +12,18 @@ class Main extends StatelessWidget {
   const Main({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Layout(),
+      home: const Layout(),
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: appBarTextStyle,
+        ),
+        textTheme: const TextTheme(
+          titleMedium: mediumTextStyle,
+          bodyMedium: mediumBodyStyle,
+        ),
+      ), // textTheme: const TextTheme(titleMedium: appBarTextStyle)
     );
   }
 }

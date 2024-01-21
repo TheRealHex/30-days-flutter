@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/screen/completed.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  Home({
+    super.key,
+    // required this.unChecked,
+  });
+  // late String unChecked;
   @override
   State<Home> createState() => _HomeState();
 }
@@ -15,42 +19,41 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Todo App'),
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.black87,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Todo App'),
+        centerTitle: true,
+        titleTextStyle: TextStyle(
+          backgroundColor: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+          color: Colors.black87,
         ),
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Column(children: [
-            const SizedBox(height: 50),
-
-            // Text input and insert icon
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: _searchadd(),
-            ),
-
-            // Display inserted text and icons to check & delete
-            const SizedBox(height: 50),
-            Flexible(
-              child: ListView.builder(
-                itemCount: todoList.length,
-                itemBuilder: (context, index) {
-                  return _fetchList(context, index);
-                },
-              ),
-            ),
-          ]),
-        ),
-        floatingActionButton: floatingBtn(context),
       ),
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(children: [
+          const SizedBox(height: 50),
+
+          // Text input and insert icon
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: _searchadd(),
+          ),
+
+          // Display inserted text and icons to check & delete
+          const SizedBox(height: 50),
+          Flexible(
+            child: ListView.builder(
+              itemCount: todoList.length,
+              itemBuilder: (context, index) {
+                return _fetchList(context, index);
+              },
+            ),
+          ),
+        ]),
+      ),
+      floatingActionButton: floatingBtn(context),
     );
   }
 

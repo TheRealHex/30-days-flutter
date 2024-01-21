@@ -7,7 +7,7 @@ class Checked extends StatefulWidget {
     required this.checkedList,
   });
   List<String> checkedList = [];
-  List<String> unChecked = [];
+  // List<String> unChecked = [];
 
   @override
   State<Checked> createState() => _CheckedState();
@@ -42,6 +42,7 @@ class _CheckedState extends State<Checked> {
                     setState(() {
                       if (widget.checkedList.isNotEmpty) {
                         // uncheck logic
+                        // unChecked = checkList[index];
                       }
                     });
                   },

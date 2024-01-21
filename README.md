@@ -1,4 +1,3 @@
-
 # 30-days-Flutter
 ## Syllabus & Progress
 
@@ -48,3 +47,6 @@
  - [ ] The concept of **Null-Safety** in Flutter
  - [ ] Local database using sqflite
  - [ ] Publishing Flutter app in Google Play
+
+## Snaps
+![Preview](previews/practice_layout.png)

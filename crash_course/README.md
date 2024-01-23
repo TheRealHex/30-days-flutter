@@ -1,16 +1,19 @@
-# crash_course
+# Learning through a crash course
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ - [x] Flutter Layout Basics (Column, Row, Container)
+ - [x] Custom Widgets creation
+ - [x] Mocking Data with Models
+ - [x] Working with Images
+ - [ ] Styling (Text, Fonts, ThemeData)
+ - [ ] Working with Lists
+ - [ ] Navigation & Routing
+ - [ ] Simple Unit Tests
+ - [ ] Sanity checks with Integration tests
+ - [ ] Working with JSON
+ - [ ] Learning about Futures, async/await
+ - [ ] Testing & Integrating web services
+ - [ ] Stateful Widgets
+ - [ ] Progress Bar & Pull to refresh
+ - [ ] Custom ListViews
+ - [ ] Refining screen designs
+ - [ ] Custom AppBars

@@ -1,18 +1,13 @@
+import 'package:crash_course/mocks/mock_location.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/home.dart';
+import 'models/location.dart';
+import 'screens/location_detail.dart';
 
 void main() {
-  runApp(const Main());
-}
-
-class Main extends StatelessWidget {
-  const Main({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
-    );
-  }
+  final Location mockLocation = MockLocation.fetchAny();
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: LocationDetail(mockLocation),
+  ));
 }

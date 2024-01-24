@@ -1,4 +1,5 @@
 import 'package:crash_course/models/location.dart';
+import 'package:crash_course/styles.dart';
 import 'package:flutter/material.dart';
 
 class LocationDetail extends StatelessWidget {
@@ -45,20 +46,27 @@ Widget _sectionTitle(String text) => Container(
       child: Text(
         text,
         textAlign: TextAlign.left,
-        style: const TextStyle(
-            fontSize: 16, color: Colors.brown, fontWeight: FontWeight.bold),
+        style: mediumTitleStyle,
       ),
     );
 Widget _sectionText(String text) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 16), child: Text(text));
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Text(
+        text,
+        style: mediumBodyStyle,
+      ),
+    );
 Widget _bannerImage(String url, double height) {
   return Container(
     decoration: BoxDecoration(color: Colors.grey[100]),
     padding: const EdgeInsets.symmetric(horizontal: 10),
     constraints: BoxConstraints.tightFor(height: height),
-    child: Image.network(
-      url,
-      fit: BoxFit.fitWidth,
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.network(
+        url,
+        fit: BoxFit.fitWidth,
+      ),
     ),
   );
 }

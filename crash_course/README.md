@@ -4,7 +4,7 @@
  - [x] Custom Widgets creation
  - [x] Mocking Data with Models
  - [x] Working with Images
- - [ ] Styling (Text, Fonts, ThemeData)
+ - [x] Styling (Text, Fonts, ThemeData)
  - [ ] Working with Lists
  - [ ] Navigation & Routing
  - [ ] Simple Unit Tests

@@ -50,3 +50,4 @@
 
 ## Snaps
 ![Preview](previews/practice_layout.png)
+![Preview](previews/basic_layout.png)

@@ -32,13 +32,13 @@
 
 		- (Row, Column, Expanded, Gridview, ListBuilder, Stack)
 
- - [ ] Making **Custom Reusable Widgets** in Flutter (through variables,
+ - [x] Making **Custom Reusable Widgets** in Flutter (through variables,
        functions, classes)
 
- - [ ] Flutter **Filename convention**
+ - [x] Flutter **Filename convention**
  - [x] Creating Multiple screens & **routing** between **Screens**
- - [ ] Creating **dynamic routing**
- - [x] Page **transition** during routing
+ - [x] Creating **dynamic routing**
+ - [] Page **transition** during routing
  - [ ] Playing with **Bottom Navigation Bar**
  - [ ] Understanding the **layouts** in model & their modelings
  - [x] Working with **Image files, & other static files** in Flutter

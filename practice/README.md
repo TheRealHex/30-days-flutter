@@ -2,7 +2,7 @@
 
  - [x] Flutter Layout Basics
  - [x] Working with Images
- - [ ] Text, Fonts & ThemeData
+ - [x] Text, Fonts & ThemeData
  - [ ] Working with Lists
  - [ ] Simple Unit Testing
  - [ ] Sanity checks in Integration test
@@ -12,7 +12,7 @@
  - [ ] Progress Bar & Pull to refresh
  - [ ] Custom ListViews
  - [ ] Models
- - [ ] Navigation & Routing
+ - [x] Navigation & Routing
  - [ ] Intermediate Style
  - [ ] Scoped Model, Realistic Forms & Webviews in Flutter
  - [ ] Advance Flutter

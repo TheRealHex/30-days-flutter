@@ -3,7 +3,7 @@ import 'package:crash_course/styles.dart';
 import 'package:flutter/material.dart';
 
 import 'models/location.dart';
-import 'screens/location_detail.dart';
+import 'models/location_detail.dart';
 
 void main() {
   final Location mockLocation = MockLocation.fetchAny();

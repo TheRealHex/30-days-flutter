@@ -38,7 +38,7 @@
  - [x] Flutter **Filename convention**
  - [x] Creating Multiple screens & **routing** between **Screens**
  - [x] Creating **dynamic routing**
- - [] Page **transition** during routing
+ - [ ] Page **transition** during routing
  - [ ] Playing with **Bottom Navigation Bar**
  - [ ] Understanding the **layouts** in model & their modelings
  - [x] Working with **Image files, & other static files** in Flutter

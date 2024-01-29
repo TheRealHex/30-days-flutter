@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-// import 'package:todo_app/screen/completed.dart';
+
+import '../constants.dart';
+// import 'package:path_provider/path_provider.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key});
@@ -14,13 +16,12 @@ class _HomeState extends State<Home> {
   final List<String> todoList = [];
   final List<String> checkedList = [];
   late String inputValue;
-  late String todoPath= 'todo.txt';
-  late String donePath= 'done.txt';
 
   @override
   void initState() {
     super.initState();
     _loadTask();
+    getPaths();
   }
 
   @override

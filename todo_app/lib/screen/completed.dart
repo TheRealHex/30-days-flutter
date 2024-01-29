@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 // ignore: must_be_immutable
 class Checked extends StatefulWidget {
   Checked({
@@ -15,10 +17,6 @@ class Checked extends StatefulWidget {
 }
 
 class _CheckedState extends State<Checked> {
-  List<String> unChecked = [];
-  late String todoPath = 'todo.txt';
-  late String donePath = 'done.txt';
-
   @override
   void initState() {
     super.initState();
@@ -65,14 +63,18 @@ class _CheckedState extends State<Checked> {
               if (widget.checkedList.isNotEmpty) {
                 String completed = widget.checkedList[index];
                 widget.checkedList.removeAt(index);
-                unChecked.add(completed);
 
                 // Save into files
                 final doneFile = File(donePath);
                 doneFile.writeAsStringSync(widget.checkedList.join('\n'));
+
+                // Append to todo list with a new line
                 final todoFile = File(todoPath);
-                todoFile.writeAsStringSync('$completed\n',
-                    mode: FileMode.append);
+                final todoContent =
+                    todoFile.existsSync() ? todoFile.readAsStringSync() : '';
+                final updatedTodoContent = '$todoContent\n$completed';
+                todoFile.writeAsStringSync(updatedTodoContent);
+
                 setState(() {});
               }
             },

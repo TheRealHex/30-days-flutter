@@ -25,7 +25,12 @@ class _CheckedState extends State<Checked> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Completed')),
+      appBar: AppBar(
+          title: const Text('Completed'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.pushReplacementNamed(context, '/'),
+          )),
       body: ListView.builder(
         itemCount: widget.checkedList.length,
         itemBuilder: (context, index) {

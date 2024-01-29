@@ -215,7 +215,7 @@ class _HomeState extends State<Home> {
   FloatingActionButton floatingBtn(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        Navigator.pushNamed(
+        Navigator.pushReplacementNamed(
           context,
           '/checked',
           arguments: {'checkedList': checkedList},

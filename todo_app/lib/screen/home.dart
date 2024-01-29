@@ -1,12 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:todo_app/screen/completed.dart';
 
 class Home extends StatefulWidget {
-  Home({
-    super.key,
-    // required this.unChecked,
-  });
-  // late String unChecked;
+  Home({super.key});
   @override
   State<Home> createState() => _HomeState();
 }
@@ -16,6 +14,13 @@ class _HomeState extends State<Home> {
   final List<String> todoList = [];
   final List<String> checkedList = [];
   late String inputValue;
+  late String filePath = '/home/hex/todo.txt';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTask();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,17 +88,83 @@ class _HomeState extends State<Home> {
         ),
         IconButton(
             onPressed: () {
-              setState(() {
-                if (inputValue != '') {
-                  todoList.add(inputValue);
-                  _textController.clear();
-                  inputValue = '';
-                }
-              });
+              _saveTask(filePath);
+              _loadTask();
             },
             icon: const Icon(Icons.add)),
       ],
     );
+  }
+
+  void _saveTask(String path) {
+    final task = _textController.text;
+
+    if (task.isNotEmpty) {
+      todoList.add(task);
+      final file = File(path);
+
+      //Read existing content
+      String existingContent = '';
+      if (file.existsSync()) {
+        existingContent = file.readAsStringSync();
+      }
+
+      //Append new todo
+      final updateContent = '$existingContent\n$task';
+
+      // Write the updated content back to file
+      file.writeAsStringSync(updateContent);
+      _textController.clear();
+    }
+  }
+
+  void _loadTask() {
+    final file = File('/home/hex/todo.txt');
+
+    if (file.existsSync()) {
+      final content = file.readAsStringSync();
+      todoList.clear();
+      todoList
+          .addAll(content.split('\n').where((task) => task.trim().isNotEmpty));
+      setState(() {});
+    }
+  }
+
+  void _editTask(int index) {
+    final String inputValue = _textController.text;
+    if (inputValue.isNotEmpty) {
+      todoList[index] = inputValue;
+
+      final file = File(filePath);
+      file.writeAsStringSync(todoList.join('\n'));
+
+      _textController.clear();
+    }
+  }
+
+  void _completeTask(int index) {
+    String completed = todoList[index];
+    todoList.removeAt(index);
+    checkedList.add(completed);
+
+    // Save into files
+    final todoFile = File(filePath);
+    todoFile.writeAsStringSync(todoList.join('\n'));
+    final doneFile = File('/home/hex/done.txt');
+    doneFile.writeAsStringSync('$completed\n', mode: FileMode.append);
+
+    // Refresh the screen
+    setState(() {});
+  }
+
+  void _deleteTask(int index) {
+    if (todoList.isNotEmpty) {
+      todoList.removeAt(index);
+
+      // save the file
+      final file = File(filePath);
+      file.writeAsStringSync(todoList.join('\n'));
+    }
   }
 
   // Display list of the input Todo items
@@ -113,20 +184,14 @@ class _HomeState extends State<Home> {
             IconButton(
                 onPressed: () {
                   setState(() {
-                    if (inputValue.isNotEmpty) {
-                      todoList[index] = inputValue;
-                      _textController.clear();
-                    }
+                    _editTask(index);
                   });
                 },
                 icon: const Icon(Icons.find_replace)),
             IconButton(
                 onPressed: () {
                   setState(() {
-                    checkedList.add(todoList[index]);
-                    if (todoList.isNotEmpty) {
-                      todoList.removeAt(index);
-                    }
+                    _completeTask(index);
                   });
                 },
                 icon: const Icon(Icons.check)),
@@ -134,9 +199,7 @@ class _HomeState extends State<Home> {
               onPressed: () {
                 setState(
                   () {
-                    if (todoList.isNotEmpty) {
-                      todoList.removeAt(index);
-                    }
+                    _deleteTask(index);
                   },
                 );
               },

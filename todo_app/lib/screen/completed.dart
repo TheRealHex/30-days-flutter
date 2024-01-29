@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -40,10 +42,7 @@ class _CheckedState extends State<Checked> {
                 IconButton(
                   onPressed: () {
                     setState(() {
-                      if (widget.checkedList.isNotEmpty) {
-                        // uncheck logic
-                        // unChecked = checkList[index];
-                      }
+                      if (widget.checkedList.isNotEmpty) {}
                     });
                   },
                   icon: const Icon(Icons.checklist_rtl),
@@ -55,6 +54,10 @@ class _CheckedState extends State<Checked> {
                     setState(() {
                       if (widget.checkedList.isNotEmpty) {
                         widget.checkedList.removeAt(index);
+
+                        // save the file
+                        final file = File('/home/hex/done.txt');
+                        file.writeAsStringSync(widget.checkedList.join('\n'));
                       }
                     });
                   },

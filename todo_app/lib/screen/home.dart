@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:todo_app/screen/completed.dart';
+// import 'package:todo_app/screen/completed.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  Home({Key? key});
   @override
   State<Home> createState() => _HomeState();
 }
@@ -215,13 +215,10 @@ class _HomeState extends State<Home> {
   FloatingActionButton floatingBtn(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => Checked(
-              checkedList: checkedList,
-            ),
-          ),
+          '/checked',
+          arguments: {'checkedList': checkedList},
         );
       },
       child: const Icon(Icons.checklist),

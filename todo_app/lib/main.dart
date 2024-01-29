@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/screen/completed.dart';
 import 'package:todo_app/screen/home.dart';
 
 void main() {
@@ -6,13 +7,19 @@ void main() {
 }
 
 class Main extends StatelessWidget {
-  const Main({super.key});
+  const Main({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (_) => Home(),
+        '/checked': (_) => Checked(
+              checkedList: [],
+            ),
+      },
     );
   }
 }

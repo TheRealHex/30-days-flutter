@@ -16,6 +16,9 @@ class Checked extends StatefulWidget {
 
 class _CheckedState extends State<Checked> {
   List<String> unChecked = [];
+  late String todoPath = 'todo.txt';
+  late String donePath = 'done.txt';
+
   @override
   void initState() {
     super.initState();
@@ -65,9 +68,9 @@ class _CheckedState extends State<Checked> {
                 unChecked.add(completed);
 
                 // Save into files
-                final doneFile = File('/home/hex/done.txt');
+                final doneFile = File(donePath);
                 doneFile.writeAsStringSync(widget.checkedList.join('\n'));
-                final todoFile = File('/home/hex/todo.txt');
+                final todoFile = File(todoPath);
                 todoFile.writeAsStringSync('$completed\n',
                     mode: FileMode.append);
                 setState(() {});
@@ -84,7 +87,7 @@ class _CheckedState extends State<Checked> {
                   widget.checkedList.removeAt(index);
 
                   // save the file
-                  final file = File('/home/hex/done.txt');
+                  final file = File(donePath);
                   file.writeAsStringSync(widget.checkedList.join('\n'));
                 }
               });
@@ -97,7 +100,7 @@ class _CheckedState extends State<Checked> {
   }
 
   void _loadTask() {
-    final file = File('/home/hex/done.txt');
+    final file = File(donePath);
 
     if (file.existsSync()) {
       setState(() {

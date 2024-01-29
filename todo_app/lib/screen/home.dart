@@ -14,7 +14,8 @@ class _HomeState extends State<Home> {
   final List<String> todoList = [];
   final List<String> checkedList = [];
   late String inputValue;
-  late String filePath = '/home/hex/todo.txt';
+  late String todoPath= 'todo.txt';
+  late String donePath= 'done.txt';
 
   @override
   void initState() {
@@ -88,7 +89,7 @@ class _HomeState extends State<Home> {
         ),
         IconButton(
             onPressed: () {
-              _saveTask(filePath);
+              _saveTask(todoPath);
               _loadTask();
             },
             icon: const Icon(Icons.add)),
@@ -119,7 +120,7 @@ class _HomeState extends State<Home> {
   }
 
   void _loadTask() {
-    final file = File('/home/hex/todo.txt');
+    final file = File(todoPath);
 
     if (file.existsSync()) {
       final content = file.readAsStringSync();
@@ -135,7 +136,7 @@ class _HomeState extends State<Home> {
     if (inputValue.isNotEmpty) {
       todoList[index] = inputValue;
 
-      final file = File(filePath);
+      final file = File(todoPath);
       file.writeAsStringSync(todoList.join('\n'));
 
       _textController.clear();
@@ -148,9 +149,9 @@ class _HomeState extends State<Home> {
     checkedList.add(completed);
 
     // Save into files
-    final todoFile = File(filePath);
+    final todoFile = File(todoPath);
     todoFile.writeAsStringSync(todoList.join('\n'));
-    final doneFile = File('/home/hex/done.txt');
+    final doneFile = File(donePath);
     doneFile.writeAsStringSync('$completed\n', mode: FileMode.append);
 
     // Refresh the screen
@@ -162,7 +163,7 @@ class _HomeState extends State<Home> {
       todoList.removeAt(index);
 
       // save the file
-      final file = File(filePath);
+      final file = File(todoPath);
       file.writeAsStringSync(todoList.join('\n'));
     }
   }

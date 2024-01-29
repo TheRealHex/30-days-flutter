@@ -29,7 +29,7 @@ class _CheckedState extends State<Checked> {
       appBar: AppBar(
           centerTitle: true,
           backgroundColor: Theme.of(context).colorScheme.background,
-          title: const Text('Achieved'),
+          title: const Text('Noice!'),
           titleTextStyle: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -59,8 +59,8 @@ class _CheckedState extends State<Checked> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Icon(
-            Icons.star,
-            color: Colors.yellow[300],
+            Icons.cake,
+            color: Colors.amber[400],
           ),
           Flexible(
             child: ListTile(

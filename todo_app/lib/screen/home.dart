@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-// import 'package:path_provider/path_provider.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key});
+  final VoidCallback toggleTheme;
+  Home({required this.toggleTheme});
   @override
   State<Home> createState() => _HomeState();
 }
@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wut Todo'),
+        title: Text('Wut Todo?'),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.background,
         titleTextStyle: TextStyle(
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: widget.toggleTheme,
             icon: Icon(
               Icons.dark_mode,
               color: Theme.of(context).colorScheme.secondary,
@@ -88,7 +88,9 @@ class _HomeState extends State<Home> {
             controller: _textController,
             cursorColor: Theme.of(context).colorScheme.primary,
             decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.background)),
               focusedBorder: OutlineInputBorder(
                 borderSide:
                     BorderSide(color: Theme.of(context).colorScheme.primary),
@@ -136,6 +138,7 @@ class _HomeState extends State<Home> {
   }
 
   void _loadTask() {
+    print('im up');
     final file = File(todoPath);
 
     if (file.existsSync()) {
@@ -205,7 +208,7 @@ class _HomeState extends State<Home> {
                 });
               },
               icon: const Icon(Icons.find_replace),
-              color: Colors.lime[300],
+              color: Colors.blueGrey[300],
             ),
             IconButton(
               onPressed: () {
@@ -243,7 +246,10 @@ class _HomeState extends State<Home> {
           arguments: {'checkedList': checkedList},
         );
       },
-      child: const Icon(Icons.checklist),
+      child: Icon(
+        Icons.checklist,
+        color: Theme.of(context).colorScheme.background,
+      ),
     );
   }
 }

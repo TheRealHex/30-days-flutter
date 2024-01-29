@@ -2,32 +2,42 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/screen/completed.dart';
 import 'package:todo_app/screen/home.dart';
 import 'package:todo_app/theme/theme_constants.dart';
-// import 'package:todo_app/style.dart';
-import 'package:todo_app/theme/theme_manager.dart';
 
 void main() {
   runApp(const Main());
 }
 
-ThemeManager _themeManager = ThemeManager();
+ThemeData activeTheme = lightTheme;
+bool isDark = false;
 
-class Main extends StatelessWidget {
+class Main extends StatefulWidget {
   const Main({Key? key});
 
+  @override
+  State<Main> createState() => _MainState();
+}
+
+class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/': (_) => Home(),
+        '/': (_) => Home(toggleTheme: toggleTheme),
         '/checked': (_) => Checked(
               checkedList: [],
             ),
       },
-      theme: darkTheme,
+      theme: activeTheme,
       darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
     );
+  }
+
+  void toggleTheme() {
+    setState(() {
+      isDark = !isDark;
+      activeTheme = isDark ? darkTheme : lightTheme;
+    });
   }
 }

@@ -27,9 +27,19 @@ class _CheckedState extends State<Checked> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Completed'),
+          centerTitle: true,
+          backgroundColor: Theme.of(context).colorScheme.background,
+          title: const Text('Achieved'),
+          titleTextStyle: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             onPressed: () => Navigator.pushReplacementNamed(context, '/'),
           )),
       body: ListView.builder(
@@ -48,12 +58,17 @@ class _CheckedState extends State<Checked> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(Icons.star),
+          Icon(
+            Icons.star,
+            color: Colors.yellow[300],
+          ),
           Flexible(
             child: ListTile(
               title: Text(widget.checkedList[index]),
-              titleTextStyle: const TextStyle(
-                  fontWeight: FontWeight.bold, color: Colors.black),
+              titleTextStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
             ),
           ),
 
@@ -79,6 +94,7 @@ class _CheckedState extends State<Checked> {
               }
             },
             icon: const Icon(Icons.checklist_rtl),
+            color: Colors.blue[300],
           ),
 
           // Delete button
@@ -95,6 +111,7 @@ class _CheckedState extends State<Checked> {
               });
             },
             icon: const Icon(Icons.delete),
+            color: Colors.red[300],
           ),
         ],
       ),

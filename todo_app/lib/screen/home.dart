@@ -28,37 +28,49 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Todo App'),
+        title: Text('Wut Todo'),
         centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.background,
         titleTextStyle: TextStyle(
-          backgroundColor: Colors.white,
           fontWeight: FontWeight.bold,
           fontSize: 18,
-          color: Colors.black87,
+          color: Theme.of(context).colorScheme.primary,
         ),
-      ),
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(children: [
-          const SizedBox(height: 50),
-
-          // Text input and insert icon
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: _searchadd(),
-          ),
-
-          // Display inserted text and icons to check & delete
-          const SizedBox(height: 50),
-          Flexible(
-            child: ListView.builder(
-              itemCount: todoList.length,
-              itemBuilder: (context, index) {
-                return _fetchList(context, index);
-              },
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.dark_mode,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
-        ]),
+        ],
+      ),
+      body: Container(
+        decoration:
+            BoxDecoration(color: Theme.of(context).colorScheme.background),
+        child: Center(
+          child: Column(children: [
+            const SizedBox(height: 40),
+
+            // Text input and insert icon
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: _searchadd(),
+            ),
+
+            // Display inserted text and icons to check & delete
+            const SizedBox(height: 50),
+            Flexible(
+              child: ListView.builder(
+                itemCount: todoList.length,
+                itemBuilder: (context, index) {
+                  return _fetchList(context, index);
+                },
+              ),
+            ),
+          ]),
+        ),
       ),
       floatingActionButton: floatingBtn(context),
     );
@@ -72,14 +84,14 @@ class _HomeState extends State<Home> {
       children: [
         Flexible(
           child: TextField(
+            style: TextStyle(color: Theme.of(context).colorScheme.secondary),
             controller: _textController,
-            cursorColor: Colors.black,
-            decoration: const InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
-              ),
+            cursorColor: Theme.of(context).colorScheme.primary,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black),
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
               hintText: 'Go for a hike!',
             ),
@@ -93,7 +105,10 @@ class _HomeState extends State<Home> {
               _saveTask(todoPath);
               _loadTask();
             },
-            icon: const Icon(Icons.add)),
+            icon: Icon(
+              Icons.add,
+              color: Theme.of(context).colorScheme.primary,
+            )),
       ],
     );
   }
@@ -178,25 +193,29 @@ class _HomeState extends State<Home> {
         Flexible(
           // width: MediaQuery.of(context).size.width / 1.4,
           child: ListTile(
-            title: Text(todoList[index]),
-          ),
+              title: Text(todoList[index]),
+              textColor: Theme.of(context).colorScheme.secondary),
         ),
         Row(
           children: [
             IconButton(
-                onPressed: () {
-                  setState(() {
-                    _editTask(index);
-                  });
-                },
-                icon: const Icon(Icons.find_replace)),
+              onPressed: () {
+                setState(() {
+                  _editTask(index);
+                });
+              },
+              icon: const Icon(Icons.find_replace),
+              color: Colors.lime[300],
+            ),
             IconButton(
-                onPressed: () {
-                  setState(() {
-                    _completeTask(index);
-                  });
-                },
-                icon: const Icon(Icons.check)),
+              onPressed: () {
+                setState(() {
+                  _completeTask(index);
+                });
+              },
+              icon: const Icon(Icons.check),
+              color: Colors.blue[300],
+            ),
             IconButton(
               onPressed: () {
                 setState(
@@ -206,6 +225,7 @@ class _HomeState extends State<Home> {
                 );
               },
               icon: const Icon(Icons.delete),
+              color: Colors.red[300],
             ),
           ],
         )

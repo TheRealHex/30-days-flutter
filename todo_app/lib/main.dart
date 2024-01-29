@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/screen/completed.dart';
 import 'package:todo_app/screen/home.dart';
+import 'package:todo_app/theme/theme_constants.dart';
+// import 'package:todo_app/style.dart';
+import 'package:todo_app/theme/theme_manager.dart';
 
 void main() {
   runApp(const Main());
 }
+
+ThemeManager _themeManager = ThemeManager();
 
 class Main extends StatelessWidget {
   const Main({Key? key});
@@ -20,6 +25,9 @@ class Main extends StatelessWidget {
               checkedList: [],
             ),
       },
+      theme: darkTheme,
+      darkTheme: darkTheme,
+      themeMode: _themeManager.themeMode,
     );
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/constants.dart';
 import 'package:todo_app/screen/completed.dart';
 import 'package:todo_app/screen/home.dart';
 import 'package:todo_app/theme/theme_constants.dart';
 
 void main() {
+  getPaths();
   runApp(const Main());
 }
 

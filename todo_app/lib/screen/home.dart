@@ -25,6 +25,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     getPaths();
+    _loadTask();
   }
 
   @override
@@ -144,12 +145,15 @@ class _HomeState extends State<Home> {
     final file = File(todoPath);
 
     if (file.existsSync()) {
+      final content = file.readAsStringSync();
+      print('Loaded content: $content');
       setState(() {
-        final content = file.readAsStringSync();
         todoList.clear();
         todoList.addAll(
             content.split('\n').where((task) => task.trim().isNotEmpty));
       });
+    } else {
+      print('File does not exist at $todoPath');
     }
   }
 

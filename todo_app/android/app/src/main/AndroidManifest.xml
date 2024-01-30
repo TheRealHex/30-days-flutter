@@ -3,7 +3,7 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
   <application
-    android:label="Todo App"
+    android:label="Wut Todo?"
     android:name="${applicationName}"
     android:requestLegacyExternalStorage="true"
     android:icon="@mipmap/launcher_icon">

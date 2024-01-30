@@ -23,25 +23,29 @@ class _CheckedState extends State<Checked> {
     _loadTask();
   }
 
+  void refresh() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Theme.of(context).colorScheme.background,
-          title: const Text('Noice!'),
-          titleTextStyle: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          leading: IconButton(
+        centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.background,
+        title: const Text('Noice!'),
+        titleTextStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).colorScheme.primary,
+        ),
+        leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
               color: Theme.of(context).colorScheme.primary,
             ),
-            onPressed: () => Navigator.pushReplacementNamed(context, '/'),
-          )),
+            onPressed: () => Navigator.pop(context, true)),
+      ),
       body: ListView.builder(
         itemCount: widget.checkedList.length,
         itemBuilder: (context, index) {
@@ -124,7 +128,6 @@ class _CheckedState extends State<Checked> {
     if (file.existsSync()) {
       setState(() {
         final content = file.readAsStringSync();
-        // widget.checkedList.clear();
         widget.checkedList.addAll(
             content.split('\n').where((task) => task.trim().isNotEmpty));
       });

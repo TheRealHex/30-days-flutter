@@ -17,10 +17,13 @@ class _HomeState extends State<Home> {
   final List<String> checkedList = [];
   late String inputValue;
 
+  void refreshState() {
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
-    _loadTask();
     getPaths();
   }
 
@@ -138,15 +141,15 @@ class _HomeState extends State<Home> {
   }
 
   void _loadTask() {
-    print('im up');
     final file = File(todoPath);
 
     if (file.existsSync()) {
-      final content = file.readAsStringSync();
-      todoList.clear();
-      todoList
-          .addAll(content.split('\n').where((task) => task.trim().isNotEmpty));
-      setState(() {});
+      setState(() {
+        final content = file.readAsStringSync();
+        todoList.clear();
+        todoList.addAll(
+            content.split('\n').where((task) => task.trim().isNotEmpty));
+      });
     }
   }
 
@@ -174,7 +177,7 @@ class _HomeState extends State<Home> {
     doneFile.writeAsStringSync('$completed\n', mode: FileMode.append);
 
     // Refresh the screen
-    setState(() {});
+    refreshState();
   }
 
   void _deleteTask(int index) {
@@ -203,29 +206,24 @@ class _HomeState extends State<Home> {
           children: [
             IconButton(
               onPressed: () {
-                setState(() {
-                  _editTask(index);
-                });
+                _editTask(index);
+                refreshState();
               },
               icon: const Icon(Icons.find_replace),
               color: Colors.blueGrey[300],
             ),
             IconButton(
               onPressed: () {
-                setState(() {
-                  _completeTask(index);
-                });
+                _completeTask(index);
+                refreshState();
               },
               icon: const Icon(Icons.check),
               color: Colors.blue[300],
             ),
             IconButton(
               onPressed: () {
-                setState(
-                  () {
-                    _deleteTask(index);
-                  },
-                );
+                _deleteTask(index);
+                refreshState();
               },
               icon: const Icon(Icons.delete),
               color: Colors.red[300],
@@ -239,12 +237,18 @@ class _HomeState extends State<Home> {
   // Button to browse checked list
   FloatingActionButton floatingBtn(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () {
-        Navigator.pushReplacementNamed(
+      onPressed: () async {
+        await Navigator.pushNamed(
           context,
           '/checked',
-          arguments: {'checkedList': checkedList},
-        );
+          arguments: {
+            'checkedList': checkedList,
+          },
+        ).then((result) {
+          if (result == true) {
+            _loadTask();
+          }
+        });
       },
       child: Icon(
         Icons.checklist,

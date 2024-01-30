@@ -146,14 +146,11 @@ class _HomeState extends State<Home> {
 
     if (file.existsSync()) {
       final content = file.readAsStringSync();
-      print('Loaded content: $content');
       setState(() {
         todoList.clear();
         todoList.addAll(
             content.split('\n').where((task) => task.trim().isNotEmpty));
       });
-    } else {
-      print('File does not exist at $todoPath');
     }
   }
 

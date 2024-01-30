@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../constants.dart';
 
@@ -17,15 +18,30 @@ class _HomeState extends State<Home> {
   final List<String> checkedList = [];
   late String inputValue;
 
-  void refreshState() {
-    setState(() {});
-  }
-
   @override
   void initState() {
     super.initState();
     getPaths();
+    if (Platform.isAndroid) {
+      reqPermission();
+    }
     _loadTask();
+  }
+
+  void refreshState() {
+    setState(() {});
+  }
+
+  void reqPermission() async {
+    var status = await Permission.storage.status;
+    if (status.isGranted) {
+      await Permission.storage.request();
+    }
+
+    var status1 = await Permission.manageExternalStorage.status;
+    if (status1.isGranted) {
+      await Permission.manageExternalStorage.request();
+    }
   }
 
   @override

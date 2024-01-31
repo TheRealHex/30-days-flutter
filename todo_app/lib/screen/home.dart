@@ -71,22 +71,26 @@ class _HomeState extends State<Home> {
             BoxDecoration(color: Theme.of(context).colorScheme.background),
         child: Center(
           child: Column(children: [
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
 
             // Text input and insert icon
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: _searchadd(),
             ),
 
             // Display inserted text and icons to check & delete
-            const SizedBox(height: 50),
+            const SizedBox(height: 10),
+            Text(error), // if error on getPath()
             Flexible(
-              child: ListView.builder(
-                itemCount: todoList.length,
-                itemBuilder: (context, index) {
-                  return _fetchList(context, index);
-                },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ListView.builder(
+                  itemCount: todoList.length,
+                  itemBuilder: (context, index) {
+                    return _fetchList(context, index);
+                  },
+                ),
               ),
             ),
           ]),
@@ -138,7 +142,8 @@ class _HomeState extends State<Home> {
   void _saveTask(String path) {
     final task = _textController.text;
 
-    if (task.isNotEmpty) {
+    // check if the task isn't empty & not already in todoList for duplicates
+    if (task.isNotEmpty && !todoList.contains(task)) {
       todoList.add(task);
       final file = File(path);
 
@@ -153,6 +158,7 @@ class _HomeState extends State<Home> {
 
       // Write the updated content back to file
       file.writeAsStringSync(updateContent);
+
       _textController.clear();
     }
   }

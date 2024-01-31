@@ -29,6 +29,7 @@ class _MainState extends State<Main> {
         '/': (_) => Home(toggleTheme: toggleTheme),
         '/checked': (_) => Checked(
               checkedList: [],
+              // error: error,
             ),
       },
       theme: activeTheme,

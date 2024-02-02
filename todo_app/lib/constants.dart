@@ -15,7 +15,7 @@ void getPaths() async {
       directory = Directory('/storage/emulated/0/Documents');
     } else if (Platform.isLinux) {
       directory = await getApplicationDocumentsDirectory();
-      print(directory.path);
+      // print(directory.path);
     }
     // else {}
     // print(directory.path);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/constants.dart';
+import 'package:todo_app/screen/about.dart';
 import 'package:todo_app/screen/completed.dart';
 import 'package:todo_app/screen/home.dart';
 import 'package:todo_app/theme/theme_constants.dart';
@@ -9,8 +10,8 @@ void main() {
   runApp(const Main());
 }
 
-ThemeData activeTheme = lightTheme;
 bool isDark = false;
+ThemeData activeTheme = lightTheme;
 
 class Main extends StatefulWidget {
   const Main({Key? key});
@@ -31,6 +32,7 @@ class _MainState extends State<Main> {
               checkedList: [],
               // error: error,
             ),
+        '/about': (_) => About(),
       },
       theme: activeTheme,
       darkTheme: darkTheme,

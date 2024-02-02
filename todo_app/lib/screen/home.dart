@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:todo_app/style.dart';
 
 import '../constants.dart';
 
@@ -22,9 +22,6 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     getPaths();
-    if (Platform.isAndroid) {
-      reqPermission();
-    }
     _loadTask();
   }
 
@@ -32,30 +29,14 @@ class _HomeState extends State<Home> {
     setState(() {});
   }
 
-  void reqPermission() async {
-    var status = await Permission.storage.status;
-    if (status.isGranted) {
-      await Permission.storage.request();
-    }
-
-    var status1 = await Permission.manageExternalStorage.status;
-    if (status1.isGranted) {
-      await Permission.manageExternalStorage.request();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Wut Todo?'),
-        centerTitle: true,
+        titleTextStyle: appBarTextStyle(context),
         backgroundColor: Theme.of(context).colorScheme.background,
-        titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18,
-          color: Theme.of(context).colorScheme.primary,
-        ),
+        // titleTextStyle: Text(context),
         actions: [
           IconButton(
             onPressed: widget.toggleTheme,

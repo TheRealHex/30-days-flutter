@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/main.dart';
 import 'package:todo_app/style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class About extends StatelessWidget {
   const About({super.key});
@@ -11,6 +12,7 @@ class About extends StatelessWidget {
       appBar: AppBar(
         title: Text('About'),
         titleTextStyle: appBarTextStyle(context),
+        backgroundColor: Theme.of(context).colorScheme.background,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,9 +51,14 @@ class About extends StatelessWidget {
           ),
           SizedBox(height: 20),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: () async {
+              var url = Uri.https('github.com', '/therealhex');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              }
+            },
             icon: Icon(Icons.link),
-            label: Text('Source Code'),
+            label: Text('Meet me on Github!'),
           ),
         ],
       ),

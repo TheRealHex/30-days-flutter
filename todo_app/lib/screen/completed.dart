@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/style.dart';
 
 import '../constants.dart';
 
@@ -31,20 +32,24 @@ class _CheckedState extends State<Checked> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.background,
         title: const Text('Noice!'),
-        titleTextStyle: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Theme.of(context).colorScheme.primary,
-        ),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        titleTextStyle: appBarTextStyle(context),
         leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
               color: Theme.of(context).colorScheme.primary,
             ),
             onPressed: () => Navigator.pop(context, true)),
+        actions: [
+          IconButton(
+            onPressed: () => {Navigator.pushNamed(context, '/about')},
+            icon: Icon(
+              Icons.question_mark,
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: widget.checkedList.length,
